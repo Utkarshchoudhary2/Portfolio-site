@@ -1,0 +1,21 @@
+<form id="contactForm" class="card form-row">
+  <input name="name" placeholder="Your name" required>
+  <input type="email" name="email" placeholder="Your email" required>
+  <textarea name="message" placeholder="Comment" required></textarea>
+  <button type="submit">Send</button>
+</form>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+<script>
+  emailjs.init("MVNLMa6XAnCSIfOnY"); // your public key
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const params = {
+      from_name: this.name.value,
+      reply_to: this.email.value,
+      message: this.message.value
+    };
+    emailjs.send("service_6bwckaq","template_otmgn2e", params)
+      .then(()=> alert("Message sent!"), (err)=> alert("Failed: "+JSON.stringify(err)));
+  });
+</script>
