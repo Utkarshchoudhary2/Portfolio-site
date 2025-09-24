@@ -214,3 +214,46 @@ main {
 .resume-button {
   margin-bottom: 12px; /* add some space between resume button and logout */
 }
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  margin-top: 22px;
+}
+
+.project-card {
+  background: #19223c;
+  color: white;
+  padding: 18px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.18);
+  line-height: 1.4;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 32px rgba(0,170,255,0.6);
+}
+
+.project-card h3 {
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.project-btn {
+  margin-top: 12px;
+  display: inline-block;
+  padding: 7px 22px;
+  background: #00aaff;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.project-btn:hover {
+  background: #0078a8;
+}
