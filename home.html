@@ -77,5 +77,24 @@
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/tsparticles@3"></script>
+<script>
+tsParticles.load("tsparticles", {
+  background: { color: "#10192b" },
+  fpsLimit: 60,
+  particles: {
+    number: { value: 25, density: { enable: true, area: 800 } },
+    color: { value: "#5bbefa" },
+    shape: {
+      type: "polygon",
+      polygon: { nb_sides: 3 }
+    },
+    opacity: { value: 0.18, random: true },
+    size: { value: 64, random: true, min: 24 },
+    move: { enable: true, speed: 1.7, random: false, straight: false, out_mode: "out" },
+    links: { enable: true, distance: 120, color: "#3a86c7", opacity: 0.22, width: 1 }
+  },
+  detectRetina: true
+});
+</script>
 </body>
 </html>

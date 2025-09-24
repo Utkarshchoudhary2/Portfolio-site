@@ -19,7 +19,7 @@ aside.sidebar {
   top: 0;
   left: 0;
   width: 75px;
-  height: 100vh;
+  height: 70vh;           /* Increase height to 70% of the viewport */
   background: #0b1220;
   border-top-right-radius: 32px;
   border-bottom-right-radius: 32px;
@@ -29,6 +29,7 @@ aside.sidebar {
   align-items: center;
   padding: 24px 0;
   z-index: 5;
+  justify-content: flex-start;
 }
 .profile-icon {
   width: 50px;
