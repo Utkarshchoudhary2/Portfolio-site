@@ -10,40 +10,61 @@
   .projects-list {
     display: flex;
     flex-direction: column;
-    gap: 22px;
-    margin-top: 22px;
+    gap: 26px;
+    margin-top: 28px;
   }
   .project-card {
-    background: #19223c;
+    background: linear-gradient(145deg, #1e2a4f, #162149);
     color: white;
-    padding: 18px 20px;
-    border-radius: 12px;
-    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
-    line-height: 1.4;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    padding: 22px 26px;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 120, 255, 0.22);
+    line-height: 1.5;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                background-color 0.4s ease;
+    cursor: pointer;
   }
   .project-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 8px 32px rgba(0, 170, 255, 0.6);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 48px rgba(0, 170, 255, 0.6);
+    background: linear-gradient(145deg, #1c3b77, #2658c4);
   }
   .project-card h3 {
-    margin-top: 6px;
-    margin-bottom: 8px;
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #dbe9ff;
+    transition: color 0.35s ease;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 6px rgba(0, 170, 255, 0.7);
+  }
+  .project-card:hover h3 {
+    color: #ffffff;
+  }
+  .project-card p {
+    font-size: 1rem;
+    color: #a9bcff;
+    max-width: 600px;
   }
   .project-btn {
-    margin-top: 12px;
+    margin-top: 18px;
     display: inline-block;
-    padding: 7px 22px;
+    padding: 12px 28px;
     background: #00aaff;
-    border-radius: 8px;
+    border-radius: 12px;
     color: #fff;
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1rem;
     text-decoration: none;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.35s ease, box-shadow 0.35s ease;
+    box-shadow: 0 6px 20px rgba(0, 170, 255, 0.6);
   }
   .project-btn:hover {
-    background: #0078a8;
+    background-color: #005f9e;
+    box-shadow: 0 10px 32px rgba(0, 95, 158, 0.9);
   }
   #particles-js {
     position: fixed;
@@ -105,16 +126,16 @@
 <div id="particles-js"></div>
 
 <aside class="sidebar">
-  <div class="profile-icon">U</div>
+  <div class="profile-icon" style="font-size: 1.4rem; font-weight: 700; color: #5bbefa;">U</div>
   <nav class="sidebar-menu">
-    <button aria-label="Home" onclick="location.href='home.html'">
+    <button aria-label="Home" onclick="location.href='index.html'">
       <svg width="26" height="26" fill="#5bbefa" viewBox="0 0 24 24">
         <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
       </svg>
     </button>
     <button aria-label="About" onclick="location.href='about.html'">
       <svg width="26" height="26" fill="#5bbefa" viewBox="0 0 24 24">
-        <circle cx="12" cy="7" r="4"></circle>
+        <circle cx="12" cy="7" r="4" fill="#5bbefa"></circle>
         <path d="M5.5 21a6.5 6.5 0 0113 0"></path>
       </svg>
     </button>
@@ -135,18 +156,28 @@
     <path d="M6 2a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zM13 3.5v5.5h5.5L13 3.5z"/>
   </svg>
 </a>
-  <div class="logout">Logout</div>
+<div class="logout" onclick="logout()" aria-label="Logout" role="button" tabindex="0">
+  <svg width="24" height="24" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+  </svg>
+</div>
+
+<script>
+  function logout() {
+    window.location.href = 'login.html'; // Redirect to login page on logout
+  }
+</script>
 </aside>
 
 <main>
   <section id="projects" class="content-section active">
-    <h2>Projects</h2>
-    <p>Some of my recent works</p>
+    <h2 style="font-size: 2.25rem; font-weight: 700; color:#5bbefa;">Projects</h2>
+    <p style="font-size: 1rem; color:#cbd4e1;">Some of my recent works</p>
     <div class="projects-list">
       <div class="project-card">
         <h3>Secure Login System (Cybersecurity)</h3>
         <p>Built a secure authentication system using encryption & hashing. Demo included.</p>
-        <a href="#" class="project-btn">View Demo</a>
+        <a href="secure-login-system.html" class="project-btn">View Demo</a>
       </div>
       <div class="project-card">
         <h3>Personal Portfolio Website (Web)</h3>
@@ -202,6 +233,38 @@
     },
     retina_detect: true
   });
+</script>
+
+<script>
+  function logout() {
+    // Optional: clear any local storage / cookies or call sign out APIs
+    window.location.href = 'login.html'; // Redirect to login page
+  }
+</script>
+
+<script>
+  function logout() {
+    // Optional: clear any local storage / cookies or call sign out APIs
+    window.location.href = 'login.html'; // Redirect to login page
+  }
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const projectCards = document.querySelectorAll(".project-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        entry.target.classList.add("active");
+      } else {
+        entry.target.classList.remove("active");
+      }
+    });
+  }, { threshold: 0.5 }); // triggers when 50% of card visible
+
+  projectCards.forEach(card => observer.observe(card));
+});
 </script>
 
 </body>

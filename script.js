@@ -150,3 +150,31 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+const username = document.getElementById("username").value.trim();
+// after login success:
+localStorage.setItem('loggedInUser', username);
+window.location.href = 'home.html'; // redirect to home
+
+window.onload = () => {
+  const user = localStorage.getItem('loggedInUser');
+  const greetingEl = document.getElementById('greeting');
+  if (user && greetingEl) {
+    greetingEl.textContent = `Hi — ${user}`;
+  }
+};
+document.addEventListener("DOMContentLoaded", () => {
+  const cards = document.querySelectorAll(".project-card");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("active");
+      } else {
+        entry.target.classList.remove("active");
+      }
+    });
+  }, { threshold: 0.5 }); // trigger when 50% visible
+
+  cards.forEach(card => observer.observe(card));
+});

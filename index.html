@@ -82,6 +82,25 @@
     max-width: 720px;
     color: white;
   }
+
+  /* Adjusted Font Sizes */
+  h1 {
+    font-size: 2.4rem; /* Moderate size bigger than default */
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: #5bbefa;
+  }
+  p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #cbd4e1;
+    max-width: 580px;
+  }
+  .profile-icon {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #5bbefa;
+  }
 </style>
 </head>
 <body>
@@ -120,12 +139,22 @@
     <path d="M6 2a2 2 0 0 0-2 2v16c0 1.1.9 2 2 2h12a2 2 0 0 0 2-2V8l-6-6H6zM13 3.5v5.5h5.5L13 3.5z"/>
   </svg>
 </a>
-  <div class="logout">Logout</div>
+<div class="logout" onclick="logout()" aria-label="Logout" role="button" tabindex="0">
+  <svg width="24" height="24" fill="white" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <path d="M16 13v-2H7V8l-5 4 5 4v-3zM20 3h-8v2h8v14h-8v2h8a2 2 0 002-2V5a2 2 0 00-2-2z"/>
+  </svg>
+</div>
+
+<script>
+  function logout() {
+    window.location.href = 'login.html'; // Redirect to login page on logout
+  }
+</script>
 </aside>
 
 <main>
   <section id="home" class="content-section active">
-    <h1>Hi — I'm Utkarsh Chaudhary</h1>
+    <h1 id="greeting">Hi — I'm Utkarsh Chaudhary</h1>
     <p>Aspiring Software Developer • Web, Cybersecurity & Game Design. Diploma + B.Tech student building modern, secure and interactive experiences.</p>
   </section>
 </main>
@@ -170,6 +199,13 @@
     },
     retina_detect: true
   });
+</script>
+
+<script>
+  function logout() {
+    // Optional: clear any local storage / cookies or call sign out APIs
+    window.location.href = 'login.html'; // Redirect to login page
+  }
 </script>
 
 </body>
