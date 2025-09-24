@@ -7,13 +7,12 @@ body {
 }
 #tsparticles {
   position: fixed;
+  inset: 0;
+  z-index: 0;
   width: 100vw;
   height: 100vh;
-  top: 0;
-  left: 0;
-  z-index: 0;
   pointer-events: none;
-  background: transparent;
+  background-color: #10192b;
 }
 aside.sidebar {
   position: fixed;
