@@ -178,3 +178,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   cards.forEach(card => observer.observe(card));
 });
+// Simplified logout handler
+async function handleLogout() {
+  await Auth.signOut();
+  userHasAuthenticated(false); // Mark user as logged out
+  nav("/login"); // Redirect to login page ONLY
+}
+// Example Route Protection for Login Page
+<Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <LoginPage />} />
