@@ -186,3 +186,10 @@ async function handleLogout() {
 }
 // Example Route Protection for Login Page
 <Route path="/login" element={isAuthenticated ? <Navigate to="/" /> : <LoginPage />} />
+
+async function handleLogout() {
+  await Auth.signOut();
+  localStorage.removeItem('loggedInUser'); // Remove local value!
+  userHasAuthenticated(false); // Mark as logged out
+  window.location.href = 'login.html'; // Always use location for consistency
+}
