@@ -1,3 +1,42 @@
+// Listen for authentication state changes from Firebase
+auth.onAuthStateChanged(user => {
+  if (!user || !user.emailVerified) {
+    // No user: Clear any local session marker and redirect to login
+    localStorage.removeItem('loggedInUser');
+    window.location.href = 'login.html';
+  } else {
+    // User is logged in: Show portfolio content
+    document.getElementById('portfolio-content').style.display = 'block';
+  }
+});
+
+// Simplified logout handler (call this whenever logging out)
+async function handleLogout() {
+  await Auth.signOut();
+  localStorage.removeItem('loggedInUser'); // Make sure to clear local storage!
+  // This will trigger auth.onAuthStateChanged to redirect to login
+}
+
+// After successful login
+const usernameInput = document.getElementById("username");
+if (usernameInput && usernameInput.value.trim()) {
+  const username = usernameInput.value.trim();
+  localStorage.setItem('loggedInUser', username);
+  window.location.href = 'home.html';
+}
+
+// Only display greeting if both: 
+// (1) Firebase auth says user is signed in
+// (2) localStorage has a loggedInUser value
+auth.onAuthStateChanged(user => {
+  const greetingEl = document.getElementById('greeting');
+  const localUser = localStorage.getItem('loggedInUser');
+  if (user && user.emailVerified && localUser && greetingEl) {
+    greetingEl.textContent = `Hi — ${localUser}`;
+  } else if (greetingEl) {
+    greetingEl.textContent = '';
+  }
+});
 document.getElementById('portfolio-content').style.display = 'none'; // initially hide
 
 auth.onAuthStateChanged(user => {
